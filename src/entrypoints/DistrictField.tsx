@@ -33,6 +33,7 @@ export default function DistrictField({ ctx }: PropTypes) {
       if (currentValue)
         setValue(options.find(({ value }) => value === currentValue))
       else {
+        //@ts-ignore
         const email = ctx.currentUser.attributes.email
         setValue(options.find(({ value, label }) => label.toLowerCase() === email))
       }
