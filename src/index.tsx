@@ -24,7 +24,7 @@ connect({
         id: 'district-user-field',
         name: 'District User Field' + (isDev ? ' (dev)' : ''),
         type: 'editor',
-        fieldTypes: ['link'],
+        fieldTypes: ['string'],
         configurable: false
       }
     ]
