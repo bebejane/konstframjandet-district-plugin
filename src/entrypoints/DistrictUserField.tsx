@@ -15,7 +15,6 @@ export default function DistrictUserField({ ctx }: PropTypes) {
 
   const [options, setOptions] = useState<DistrictUserOption[] | undefined>()
   const [value, setValue] = useState<DistrictUserOption | undefined>()
-  const [error, setError] = useState<Error | undefined>()
 
   useEffect(() => {
 
@@ -47,7 +46,6 @@ export default function DistrictUserField({ ctx }: PropTypes) {
         selectInputProps={{ isMulti: false, options }}
         onChange={(newValue) => { setValue(newValue as DistrictUserOption) }}
       />
-      {error && <div>Error: {error.message}</div>}
     </Canvas>
   )
 }
