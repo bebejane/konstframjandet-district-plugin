@@ -26,13 +26,16 @@ export default function DistrictUserField({ ctx }: PropTypes) {
 
     setOptions(options)
 
-    if (currentValue)
+    if (currentValue && options.find(({ value }) => value === currentValue))
       setValue(options.find(({ value }) => value === currentValue))
-  }, [setOptions])
+
+  }, [setOptions, ctx])
 
   useEffect(() => {
-    ctx.setFieldValue(ctx.field.attributes.api_key, value?.value)
-  }, [value])
+    const currentValue = ctx.formValues[ctx.field.attributes.api_key];
+    if (value?.value !== currentValue)
+      ctx.setFieldValue(ctx.field.attributes.api_key, value?.value)
+  }, [value, ctx])
 
   console.log(ctx)
   return (
