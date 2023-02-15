@@ -25,7 +25,7 @@ export default function DistrictField({ ctx }: PropTypes) {
 
     client.items.list({ filter: { type: 'district' } }).then((districts) => {
 
-      const options = districts.map(({ name, email }) => ({ value: email as string, label: name as string }))
+      const options = districts.map(({ id, name, email }) => ({ value: id as string, label: name as string, email: email as string }))
 
       setOptions(options)
 
@@ -33,8 +33,8 @@ export default function DistrictField({ ctx }: PropTypes) {
         setValue(options.find(({ value }) => value === currentValue))
       else {
         //@ts-ignore
-        const email = ctx.currentUser.attributes.email
-        setValue(options.find(({ value, label }) => value.toLowerCase() === email))
+        const userEmail = ctx.currentUser.attributes.email
+        setValue(options.find(({ email }) => email.toLowerCase() === userEmail))
       }
     }).catch(err => setError(err))
 
