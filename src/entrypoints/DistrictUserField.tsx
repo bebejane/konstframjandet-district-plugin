@@ -30,14 +30,14 @@ export default function DistrictUserField({ ctx }: PropTypes) {
       setValue(options.find(({ value }) => value === currentValue))
 
   }, [setOptions, ctx])
-
+  /*
   useEffect(() => {
     const currentValue = ctx.formValues[ctx.field.attributes.api_key];
     if (value?.value !== currentValue)
       ctx.setFieldValue(ctx.field.attributes.api_key, value?.value)
   }, [value, ctx])
+*/
 
-  console.log(ctx)
   return (
     <Canvas ctx={ctx}>
       <SelectField
