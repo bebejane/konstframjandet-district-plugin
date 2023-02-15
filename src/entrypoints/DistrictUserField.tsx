@@ -26,7 +26,7 @@ export default function DistrictUserField({ ctx }: PropTypes) {
     setOptions(options)
 
     if (currentValue && options.find(({ value }) => value === currentValue)) {
-      console.log('set current value')
+      console.log('set current value', options.find(({ value }) => value === currentValue))
       setValue(options.find(({ value }) => value === currentValue))
     }
 
