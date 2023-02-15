@@ -31,7 +31,7 @@ export default function DistrictUserField({ ctx }: PropTypes) {
   }, [setOptions, ctx])
 
   useEffect(() => {
-    value && ctx.setFieldValue(ctx.field.attributes.api_key, value?.value)
+    //value && ctx.setFieldValue(ctx.field.attributes.api_key, value?.value)
   }, [value])
 
   return (
