@@ -32,8 +32,8 @@ export default function DistrictField({ ctx }: PropTypes) {
       if (currentValue)
         setValue(options.find(({ value }) => value === currentValue))
       else {
-        const roleName = ctx.currentRole.attributes.name.toLowerCase();
-        setValue(options.find(({ value, label }) => label.toLowerCase() === roleName))
+        //const roleName = ctx.currentUser.
+        //setValue(options.find(({ value, label }) => label.toLowerCase() === roleName))
       }
     }).catch(err => setError(err))
 
@@ -43,6 +43,7 @@ export default function DistrictField({ ctx }: PropTypes) {
     ctx.setFieldValue(ctx.field.attributes.api_key, value?.value)
   }, [value])
 
+  console.log(ctx)
   return (
     <Canvas ctx={ctx}>
       <SelectField
