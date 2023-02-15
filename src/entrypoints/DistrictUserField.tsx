@@ -21,8 +21,7 @@ export default function DistrictUserField({ ctx }: PropTypes) {
 
     const currentValue = ctx.formValues[ctx.field.attributes.api_key];
     const options: DistrictUserOption[] = []
-    console.log(ctx.users)
-    Object.keys(ctx.users).forEach(k => options.push({ label: ctx.users[k]?.attributes.email as string, value: ctx.users[k]?.attributes.email as string }))
+    Object.keys(ctx.users).forEach(k => options.push({ label: ctx.users[k]?.attributes.full_name as string, value: ctx.users[k]?.attributes.email as string }))
     const currentOption = currentValue ? options.find(({ value }) => value === currentValue) : undefined
     setOptions(options)
     setValue(currentOption)
