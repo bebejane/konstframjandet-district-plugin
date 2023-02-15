@@ -17,7 +17,6 @@ export default function DistrictUserField({ ctx }: PropTypes) {
   const [value, setValue] = useState<DistrictUserOption | undefined>()
   const [error, setError] = useState<Error | undefined>()
 
-
   useEffect(() => {
 
     const currentValue = ctx.formValues[ctx.field.attributes.api_key];
@@ -32,7 +31,7 @@ export default function DistrictUserField({ ctx }: PropTypes) {
   }, [setOptions, ctx])
 
   useEffect(() => {
-    ctx.setFieldValue(ctx.field.attributes.api_key, value?.value)
+    value && ctx.setFieldValue(ctx.field.attributes.api_key, value?.value)
   }, [value])
 
   return (
