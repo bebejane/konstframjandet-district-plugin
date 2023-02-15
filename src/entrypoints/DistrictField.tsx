@@ -28,12 +28,13 @@ export default function DistrictField({ ctx }: PropTypes) {
       const options = districts.map(({ id, name }) => ({ value: id as string, label: name as string }))
 
       setOptions(options)
+      console.log(options)
 
       if (currentValue)
         setValue(options.find(({ value }) => value === currentValue))
       else {
-        //const roleName = ctx.currentUser.
-        //setValue(options.find(({ value, label }) => label.toLowerCase() === roleName))
+        const email = ctx.currentUser.attributes.email
+        setValue(options.find(({ value, label }) => label.toLowerCase() === email))
       }
     }).catch(err => setError(err))
 
