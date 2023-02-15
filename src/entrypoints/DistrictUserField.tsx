@@ -21,18 +21,20 @@ export default function DistrictUserField({ ctx }: PropTypes) {
 
     const currentValue = ctx.formValues[ctx.field.attributes.api_key];
     const options: DistrictUserOption[] = []
-    Object.keys(ctx.users).forEach(k => options.push({ label: ctx.users[k]?.attributes.email as string, value: k }))
+    Object.keys(ctx.users).forEach(k => options.push({ label: ctx.users[k]?.attributes.email as string, value: ctx.users[k]?.attributes.email as string }))
 
     setOptions(options)
 
-    if (currentValue && options.find(({ value }) => value === currentValue))
+    if (currentValue && options.find(({ value }) => value === currentValue)) {
+      console.log('set current value')
       setValue(options.find(({ value }) => value === currentValue))
+    }
 
   }, [setOptions, ctx])
 
   useEffect(() => {
-    //value && ctx.setFieldValue(ctx.field.attributes.api_key, value?.value)
-  }, [value])
+    value && ctx.setFieldValue(ctx.field.attributes.api_key, value?.value)
+  }, [value, ctx])
 
   return (
     <Canvas ctx={ctx}>
