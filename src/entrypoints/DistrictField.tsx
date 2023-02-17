@@ -38,13 +38,14 @@ export default function DistrictField({ ctx }: PropTypes) {
       }
     }).catch(err => setError(err))
 
-  }, [setOptions])
+  }, [setOptions, ctx])
 
   useEffect(() => {
+    if (!value) return
     ctx.setFieldValue(ctx.field.attributes.api_key, value?.value)
-  }, [value])
+  }, [value, ctx])
 
-  console.log(ctx)
+
   return (
     <Canvas ctx={ctx}>
       <SelectField
