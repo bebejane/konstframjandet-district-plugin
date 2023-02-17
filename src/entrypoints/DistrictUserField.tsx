@@ -33,7 +33,10 @@ export default function DistrictUserField({ ctx }: PropTypes) {
   }, [setOptions, ctx])
 
   useEffect(() => {
-    value && ctx.setFieldValue(ctx.field.attributes.api_key, value?.value)
+    if (value) {
+      console.log('log set value', value)
+      ctx.setFieldValue(ctx.field.attributes.api_key, value.value)
+    }
   }, [value, ctx])
 
   return (
@@ -43,7 +46,6 @@ export default function DistrictUserField({ ctx }: PropTypes) {
         name="district-user"
         label=""
         value={value}
-        required={false}
         selectInputProps={{ isMulti: false, options }}
         onChange={(newValue) => { setValue(newValue as DistrictUserOption) }}
       />
