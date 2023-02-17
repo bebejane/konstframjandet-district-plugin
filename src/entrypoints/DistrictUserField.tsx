@@ -16,9 +16,8 @@ export default function DistrictUserField({ ctx }: PropTypes) {
   const [options, setOptions] = useState<DistrictUserOption[] | undefined>()
   const [value, setValue] = useState<DistrictUserOption | undefined>()
 
-  useEffect(() => {
 
-    const currentValue = ctx.formValues[ctx.field.attributes.api_key];
+  useEffect(() => {
     const options: DistrictUserOption[] = []
 
     Object.keys(ctx.users).forEach(k => options.push({
@@ -26,6 +25,7 @@ export default function DistrictUserField({ ctx }: PropTypes) {
       value: ctx.users[k]?.attributes.email as string
     }))
 
+    const currentValue = ctx.formValues[ctx.field.attributes.api_key];
     const currentOption = currentValue ? options.find(({ value }) => value === currentValue) : undefined
     setOptions(options)
     setValue(currentOption)
@@ -33,7 +33,7 @@ export default function DistrictUserField({ ctx }: PropTypes) {
   }, [setOptions, ctx])
 
   useEffect(() => {
-    if (!value) return
+    if (!value || value.value === ctx.formValues[ctx.field.attributes.api_key]) return
     ctx.setFieldValue(ctx.field.attributes.api_key, value.value)
   }, [value, ctx])
 

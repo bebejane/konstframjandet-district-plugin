@@ -18,14 +18,15 @@ export default function DistrictField({ ctx }: PropTypes) {
   const [value, setValue] = useState<DistrictOption | undefined>()
   const [error, setError] = useState<Error | undefined>()
 
+
   useEffect(() => {
 
     const client = buildClient({ apiToken: ctx.currentUserAccessToken as string })
-    const currentValue = ctx.formValues[ctx.field.attributes.api_key];
 
     client.items.list({ filter: { type: 'district' } }).then((districts) => {
 
       const options = districts.map(({ id, name, email }) => ({ value: id as string, label: name as string, email: email as string }))
+      const currentValue = ctx.formValues[ctx.field.attributes.api_key];
 
       setOptions(options)
 
@@ -41,7 +42,7 @@ export default function DistrictField({ ctx }: PropTypes) {
   }, [setOptions, ctx])
 
   useEffect(() => {
-    if (!value) return
+    if (!value || value.value === ctx.formValues[ctx.field.attributes.api_key]) return
     ctx.setFieldValue(ctx.field.attributes.api_key, value?.value)
   }, [value, ctx])
 
