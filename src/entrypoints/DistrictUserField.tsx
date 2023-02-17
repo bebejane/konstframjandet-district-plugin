@@ -43,6 +43,7 @@ export default function DistrictUserField({ ctx }: PropTypes) {
         name="district-user"
         label=""
         value={value}
+        required={false}
         selectInputProps={{ isMulti: false, options }}
         onChange={(newValue) => { setValue(newValue as DistrictUserOption) }}
       />
