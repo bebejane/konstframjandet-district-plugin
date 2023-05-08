@@ -16,7 +16,6 @@ export default function DistrictUserField({ ctx }: PropTypes) {
   const [options, setOptions] = useState<DistrictUserOption[] | undefined>()
   const [value, setValue] = useState<DistrictUserOption | undefined>()
 
-
   useEffect(() => {
     const options: DistrictUserOption[] = []
 
@@ -29,8 +28,6 @@ export default function DistrictUserField({ ctx }: PropTypes) {
     const currentOption = currentValue ? options.find(({ value }) => value === currentValue) : undefined
     setOptions(options)
     setValue(currentOption)
-    console.log(options)
-    console.log(ctx.users)
 
   }, [setOptions, ctx])
 
@@ -39,8 +36,6 @@ export default function DistrictUserField({ ctx }: PropTypes) {
     ctx.setFieldValue(ctx.field.attributes.api_key, value.value)
 
   }, [value, ctx])
-
-  console.log(ctx)
 
   return (
     <Canvas ctx={ctx}>
