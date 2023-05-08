@@ -21,13 +21,14 @@ export default function DistrictField({ ctx }: PropTypes) {
 
   useEffect(() => {
 
+    console.log(ctx.currentUserAccessToken)
     const client = buildClient({ apiToken: ctx.currentUserAccessToken as string })
 
     client.items.list({ filter: { type: 'district' } }).then((districts) => {
-
+      console.log(districts)
       const options = districts.map(({ id, name, email }) => ({ value: id as string, label: name as string, email: email as string }))
       const currentValue = ctx.formValues[ctx.field.attributes.api_key];
-
+      console.log(currentValue)
       setOptions(options)
 
       if (currentValue)
@@ -46,6 +47,7 @@ export default function DistrictField({ ctx }: PropTypes) {
     ctx.setFieldValue(ctx.field.attributes.api_key, value?.value)
   }, [value, ctx])
 
+  console.log(error)
 
   return (
     <Canvas ctx={ctx}>
